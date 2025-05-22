@@ -1,4 +1,4 @@
-// import { defineConfig }  from "drizzle-kit";
+import { defineConfig }  from "drizzle-kit";
 import * as dotenv from "dotenv";
 
 dotenv.config({ path: ".env" });
@@ -7,8 +7,7 @@ if (!process.env.DATABASE_URL) {
     throw new Error("DATABASE_URL is not set in .env.local");
 }
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default {
+export default defineConfig({
     schema: "./lib/db/schema.ts",
     out: "./drizzle",
     dialect: "postgresql",
@@ -21,4 +20,4 @@ export default {
     },
     verbose: true,
     strict: true,
-};
+});
