@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
-import { auth } from "@clerk/nextjs/server";
 import { db } from "@/lib/db";
 import { files } from "@/lib/db/schema";
+import { auth } from "@clerk/nextjs/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
     try {
@@ -11,7 +11,6 @@ export async function POST(request: NextRequest) {
         }
 
         // Parse request body
-
         const body = await request.json();
         const { imagekit, userId: bodyUserId } = body;
 
@@ -20,12 +19,12 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
         }
 
-        // Validate ImageKit response
+        // Validate ImageKit response 
         if (!imagekit || !imagekit.url) {
-            return NextResponse.json({ error: "Invalid file upload data"}, { status: 400 });
+            return NextResponse.json({ error: "Invalid file upload data" }, { status: 400 });
         }
 
-        // Extract file information from ImageKit response
+        // Extract file information from ImageKit response 
         const fileData = {
             name: imagekit.name || "Untitled",
             path: imagekit.filePath || `/xdrop/${userId}/${imagekit.name}`,
@@ -34,15 +33,14 @@ export async function POST(request: NextRequest) {
             fileUrl: imagekit.url,
             thumbnailUrl: imagekit.thumbnailUrl || null,
             userId: userId,
-            parentId: null, // root level by default
+            parentId: null, // Root level by default
             isFolder: false,
             isStarred: false,
             isTrash: false,
         };
 
-        // Insert file record into the database
+        // Insert file record into the database 
         const [newFile] = await db.insert(files).values(fileData).returning();
-
         return NextResponse.json(newFile);
     } catch (error) {
         console.error("Error saving file:", error);
