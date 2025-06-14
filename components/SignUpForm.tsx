@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useState } from "react";
@@ -112,7 +113,7 @@ export default function SignUpForm() {
                         Verify Your Email
                     </h1>
                     <p className="text-default-500 text-center">
-                        We've sent a verification code to your email
+                        We have sent a verification code to your email
                     </p>
                 </CardHeader>
 
@@ -157,7 +158,7 @@ export default function SignUpForm() {
 
                     <div className="mt-6 text-center">
                         <p className="text-sm text-default-500">
-                            Didn't receive a code?{" "}
+                            Didnot receive a code?{" "}
                             <button
                                 onClick={async () => {
                                     if (signUp) {
@@ -265,7 +266,7 @@ export default function SignUpForm() {
                             id="passwordConfirmation"
                             type={showConfirmPassword ? "text" : "password"}
                             placeholder="......."
-                            startContent={<Lock className="h-4 w-4 text-default-500 />"}
+                            startContent={<Lock className="h-4 w-4 text-default-500 " />}
                             endContent={
                                 <Button 
                                     isIconOnly
