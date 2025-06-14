@@ -1,4 +1,4 @@
-import SignUpForm from "@/components/SignUpForm";
+import SignInForm from "@/components/SignInForm";
 // import { CloudUpload } from "lucide-react";
 // import Link from "next/link";
 import Navbar from "@/components/Navbar";
@@ -10,7 +10,7 @@ export default function SignUpPage() {
             <Navbar />
 
             <main className="flex-1 flex justify-center items-center p-6">
-                <SignUpForm />
+                <SignInForm />
             </main>
             {/** Dark mode footer */}
             <footer className="bg-gray-900 text-white py-4">
