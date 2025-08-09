@@ -14,6 +14,7 @@ import { Divider } from "@heroui/divider";
 import { Mail, Lock, AlertCircle, Eye, EyeOff } from "lucide-react";
 import { signInSchema } from "@/schemas/signInSchema";
 import { useRouter } from "next/navigation";
+import { ClerkProvider } from "@clerk/nextjs";
 
 export default function SignInForm() {
     const router = useRouter();
@@ -65,6 +66,7 @@ export default function SignInForm() {
     };
 
     return (
+        <ClerkProvider>
         <Card className="w-full max-w-md border border-default-200 bg-default-50 shadow-xl">
             <CardHeader className="flex flex-col gap-1 items-center pb-2">
                 <h1 className="text-2xl font-bold text-default-900">Welcome Back</h1>
@@ -114,6 +116,7 @@ export default function SignInForm() {
                     </div>
 
                     <Input
+                    suppressHydrationWarning
                         id="password"
                         type={showPassword ? "text" : "password"}
                         placeholder="......."
@@ -166,5 +169,6 @@ export default function SignInForm() {
                  </p>
             </CardFooter>
         </Card>
+        </ClerkProvider>
     );
 }

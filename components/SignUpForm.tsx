@@ -12,6 +12,7 @@ import { Button } from "@heroui/button";
 import { Input } from "@heroui/input";
 import { Card, CardBody, CardHeader, CardFooter } from "@heroui/card";
 import { Divider } from "@heroui/divider";
+import { ClerkProvider } from "@clerk/nextjs";
 import {
     Mail,
     Lock,
@@ -179,6 +180,7 @@ export default function SignUpForm() {
     }
 
     return (
+        <ClerkProvider>
         <Card className="w-full max-w-md border border-default-200 bg-default-50 shadow-xl">
             <CardHeader className="flex flex-col gap-1 items-center pb-2">
                 <h1 className="text-2xl font-bold text-default-900">
@@ -294,12 +296,13 @@ export default function SignUpForm() {
                             <CheckCircle className="h-5 w-5 text-primary mt-0.5" />
                             <p className="text-sm text-default-600">
                                 By signing up, you agree to our Terms of Service and Privary 
-                                Policky 
+                                Policy 
                             </p>
                         </div>
                     </div>
 
-                    <Button 
+                    <Button
+                    suppressHydrationWarning 
                         type="submit"
                         color="primary"
                         className="w-full"
@@ -324,5 +327,6 @@ export default function SignUpForm() {
                 </p>
             </CardFooter>
         </Card>
+        </ClerkProvider>
     );
 }
